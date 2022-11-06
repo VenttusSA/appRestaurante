@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 class AppColors{
 
-  static const Color appBarColor = Color.fromRGBO(255, 204, 0, 1);
-  static const Color backgroundColor = Color.fromRGBO(217, 213, 204, 1);
-  static const Color buttomPrimaryColor = Color.fromRGBO(166, 224, 227, 1);
-  static const Color buttomSecondaryColor = Color.fromRGBO(181, 174, 157, 1);
-  static const Color buttomTerciaryColor = Color.fromRGBO(255, 255, 204, 1);
+  static const Color primary = Color.fromRGBO(33, 102, 81, 1);
+  static const Color secondary = Color.fromRGBO(62, 146, 120, 1);
+  static const Color tertiary = Color.fromRGBO(116, 186, 160, 1);
+  static const Color quaternary  = Color.fromRGBO(184, 216, 191, 1);
+  static const Color background = Color.fromRGBO(208, 224, 211, 1);
 
 
 }
