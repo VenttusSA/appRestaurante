@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.center,
               colors: [
-                AppColors.quaternary,
+                AppColors.primary,
                 AppColors.secondary,
               ],
             ),
