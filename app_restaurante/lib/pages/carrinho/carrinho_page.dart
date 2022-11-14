@@ -1,12 +1,10 @@
+import 'package:app_restaurante/models/carrinho_model.dart';
 import 'package:app_restaurante/pages/carrinho/widgets/produto_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../settings/colors.dart';
 import '../../settings/variables.dart';
-import '../cardapio/cardapio_page.dart';
-import '../cardapio/widgets/produto_popup.dart';
-import '../cardapio/widgets/produto_widget.dart';
 
 class CarrinhoPage extends StatefulWidget {
   const CarrinhoPage({Key? key}) : super(key: key);
@@ -33,10 +31,23 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
           ),
           child: Stack(
             children: [
+              FutureBuilder(
+                future: loadingProdutos(),
+                builder: (context, snapshot){
+                  if(snapshot.hasData){
 
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: CarrinhoWidget(),
+                    List<CarrinhoModel> list = snapshot.data as List<CarrinhoModel>;
+
+                    return ListView.builder(
+                        itemCount: list.length,
+                        itemBuilder: (context, index){
+                          return CarrinhoWidget(model: list[index]);
+                        }
+                    );
+                  }else{
+                    return CircularProgressIndicator(color: AppColors.primary,);
+                  }
+                }
               ),
 
               Container(
@@ -59,17 +70,6 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
                 ),
               ),
 
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.8,
-                child: Column(
-                  children: [
-                    Container(
-                      child: ,
-                    )
-                  ],
-                ),
-              ),
-
               Container(
                 alignment: Alignment.bottomLeft,
                 child: Padding(
@@ -78,7 +78,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
                     children: [
                       ElevatedButton(
                         onPressed: (){
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => CarrinhoPage()));
+                          loadingProdutos();
                         },
                         child: Text('Limpar sacola', style: GoogleFonts.robotoMono(color: AppColors.primary, fontSize: 18, fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
                         style: ElevatedButton.styleFrom(
@@ -98,5 +98,17 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
           )
       ),
     );
+  }
+
+  Future<List<CarrinhoModel>> loadingProdutos() async {
+
+    var collection = await FirebaseFirestore.instance.collection('carrinho').doc(mesa).get();
+    List<CarrinhoModel> list = <CarrinhoModel>[];
+    print('teste');
+    for(var i in collection['produtos']){
+      list.add(CarrinhoModel.fromMap(i));
+    }
+    print(list.first.idProduto);
+    return list;
   }
 }

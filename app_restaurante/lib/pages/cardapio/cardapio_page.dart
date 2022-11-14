@@ -64,7 +64,7 @@ class _CardapioPageState extends State<CardapioPage> {
                                             children: [
                                               Text(cardapio.cardapio[index].nome, style: GoogleFonts.robotoMono(color: Colors.black, fontSize: 25),),
                                               Spacer(),
-                                              Icon(cardapio.cardapio[index].visible ? Icons.arrow_circle_down : Icons.arrow_circle_up)
+                                              Icon(cardapio.cardapio[index].visible ? Icons.arrow_circle_up : Icons.arrow_circle_down)
                                             ],
                                           ),
                                         ),

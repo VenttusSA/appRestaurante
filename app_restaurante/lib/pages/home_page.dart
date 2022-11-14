@@ -14,14 +14,15 @@ class HomePage extends StatelessWidget {
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-            gradient: LinearGradient(
+            color: AppColors.quaternary
+            /*gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.center,
               colors: [
                 AppColors.primary,
                 AppColors.secondary,
               ],
-            ),
+            ),*/
           ),
           child: Padding(
             padding: const EdgeInsets.all(20.0),
@@ -32,11 +33,11 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Text('Bem vindo ao', style: GoogleFonts.robotoMono(color: Colors. white, fontSize: 25),),
+                    Text('Bem vindo ao', style: GoogleFonts.robotoMono(color: Colors. white, fontSize: 25, fontWeight: FontWeight.bold),),
 
                     Text('NOME DO RESTAURANTE', style: GoogleFonts.robotoMono(color: AppColors.primary, fontSize: 40, fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
 
-                    Text('Como deseja realziar seu atendimento', style: GoogleFonts.robotoMono(color: Colors. white, fontSize: 25), textAlign: TextAlign.center,),
+                    Text('Como deseja realziar seu atendimento', style: GoogleFonts.robotoMono(color: Colors. white, fontSize: 25, fontWeight:FontWeight.bold), textAlign: TextAlign.center,),
 
                     ElevatedButton(
                       onPressed: (){

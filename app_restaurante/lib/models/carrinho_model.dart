@@ -3,33 +3,30 @@ import 'produto_model.dart';
 
 class CarrinhoModel {
 
-  String id;
-  String mesa;
-  List<ProdutoModel> produtos;
+  String idProduto;
+  String observacao;
+  int quantidade;
 
   CarrinhoModel({
-    required this.id,
-    required this.mesa,
-    required this.produtos,
+    required this.idProduto,
+    required this.observacao,
+    required this.quantidade,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'mesa': mesa,
-      'produtos': produtos.map((x) => x.toMap()).toList(),
+      'idProduto': idProduto,
+      'observacao': observacao,
+      'quantidade': quantidade,
     };
   }
 
   factory CarrinhoModel.fromMap(Map<String, dynamic> map) {
     return CarrinhoModel(
-      id: map['id'] as String,
-      mesa: map['mesa'] as String,
-      produtos: List<ProdutoModel>.from(
-        (map['produtos']).map<ProdutoModel>(
-          (x) => ProdutoModel.fromMap(x as Map<String, dynamic>),
-        ),
-      ),
+      idProduto: map['idProduto'] as String,
+      observacao: map['observacao'] ?? '',
+      quantidade: map['quantidade'] as int,
+
     );
   }
 
