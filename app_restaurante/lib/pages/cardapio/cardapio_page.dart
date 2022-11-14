@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:app_restaurante/settings/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../carrinho/carrinho_page.dart';
+
 class CardapioPage extends StatefulWidget {
   const CardapioPage({Key? key}) : super(key: key);
 
@@ -114,7 +116,7 @@ class _CardapioPageState extends State<CardapioPage> {
                 padding: const EdgeInsets.all(10.0),
                 child: ElevatedButton(  
                   onPressed: (){
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => CardapioPage(),));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => CarrinhoPage()));
                   },
                   child: Image.asset('assets/icons/pedido.png'),
                   style: ElevatedButton.styleFrom(
